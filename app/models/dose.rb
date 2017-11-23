@@ -12,5 +12,5 @@ class Dose < ApplicationRecord
   validates :ingredient_id, presence: true
 
   #A [cocktails, ingredient] pairins should be unique
-  validates :cocktail_id, uniqueness: {scopre: :ingedient_id}
+  validates :cocktail_id, uniqueness: {scope: :ingredient_id}
 end
