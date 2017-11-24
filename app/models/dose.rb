@@ -3,14 +3,9 @@ class Dose < ApplicationRecord
   belongs_to :ingredient
 
   #A dose must have a description
-  validates :description, presence: true
-
-  #A dose must have a cocktail
-  validates :cocktail_id, presence: true
-
-  #A dose must have a ingredient
-  validates :ingredient_id, presence: true
 
   #A [cocktails, ingredient] pairins should be unique
-  validates :cocktail_id, uniqueness: {scope: :ingredient_id}
+  validates :ingredient, uniqueness: {
+    scope: :cocktail,
+    message: "This ingredient is already included in your cocktail"}
 end
